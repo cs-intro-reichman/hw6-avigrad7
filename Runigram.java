@@ -8,9 +8,8 @@ public class Runigram {
 		//// Hide / change / add to the testing code below, as needed.
 		
 		// Tests the reading and printing of an image:	
-		Color[][] tinypic = read("tinypic.ppm");
-		print(tinypic);
-
+		// Color[][] tinypic = read("tinypic.ppm");
+		// print(tinypic);
 		// // Creates an image which will be the result of various 
 		// // image processing operations:
 		// Color[][] image;
@@ -22,7 +21,7 @@ public class Runigram {
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can continue using the image array.
-		print(blend(new Color(100,40,100), new Color(200,20,40), .25));
+		// print(blend(new Color(100,40,100), new Color(200,20,40), .25));
 	}
 
 	/** Returns a 2D array of Color values, representing the image data
@@ -40,8 +39,8 @@ public class Runigram {
 		// For each pixel (i,j), reads 3 values from the file,
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
-		for (int i = 0; i < numCols; i++) {
-			for (int u = 0; u < numRows; u++) {
+		for (int i = 0; i < numRows; i++) {
+			for (int u = 0; u < numCols; u++) {
 				int red = in.readInt();
 				int green = in.readInt();
 				int blue = in.readInt();
@@ -82,7 +81,7 @@ public class Runigram {
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
-	public static Color[][] flippedHorizontally(Color[][] image) {
+	public static Color[][] flippedVertically(Color[][] image) {
 		for (int i = 0; i < image.length / 2; i++) {
 			for (int u = 0; u < image[i].length; u++) {
 				Color temp = image[i][u];
@@ -96,7 +95,7 @@ public class Runigram {
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
-	public static Color[][] flippedVertically(Color[][] image){
+	public static Color[][] flippedHorizontally(Color[][] image){
 		for (int i = 0; i < image[0].length / 2; i++) {
 			for (int u = 0; u < image.length; u++) {
 				Color temp = image[u][i];
@@ -165,7 +164,7 @@ public class Runigram {
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
 		Color[][] blendedImage = new Color[image1.length][image1[0].length];
 		for (int i = 0; i < image1.length; i++) {
-			for (int u = 0; u < image1[i].length; i++) {
+			for (int u = 0; u < image1[i].length; u++) {
 				blendedImage[i][u] = blend(image1[i][u], image2[i][u], alpha);
 			}
 		}
